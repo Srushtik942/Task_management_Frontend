@@ -4,6 +4,7 @@ import { Routes,Route } from 'react-router-dom'
 import Signup from './components/SIgnup'
 import { Toaster } from "react-hot-toast";
 import Dashboard from './components/Dashboard';
+import CreateMoodBoard from './components/CreateMoodBoard';
 
 function App() {
   const isLoggedIn = () =>{
@@ -17,6 +18,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
+      <Route path="/moodBoard" element={<CreateMoodBoard/>}/>
 
  {/* Protected Route */}
         <Route

@@ -3,7 +3,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  background-color: black; /* sets background black globally */
-  color: white; /* optional: makes text readable */
+  background-color: white; /* sets background black globally */
+  color: black; /* optional: makes text readable */
   font-family: sans-serif; /* optional */
 }

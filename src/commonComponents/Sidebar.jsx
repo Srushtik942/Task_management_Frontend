@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   LayoutDashboard,
   FolderKanban,
@@ -6,16 +6,18 @@ import {
   BarChart3,
   Settings,
 } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [active, setActive] = useState("dashboard");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
-    { id: "dashboard", label: "Dashboard", icon: <LayoutDashboard size={18} /> },
-    { id: "project", label: "Project", icon: <FolderKanban size={18} /> },
-    { id: "team", label: "Team", icon: <Users size={18} /> },
-    { id: "reports", label: "Reports", icon: <BarChart3 size={18} /> },
-    { id: "settings", label: "Setting", icon: <Settings size={18} /> },
+    { path: "/dashboard", label: "Dashboard", icon: <LayoutDashboard size={18} /> },
+    { path: "/moodBoard", label: "Project", icon: <FolderKanban size={18} /> },
+    { path: "/team", label: "Team", icon: <Users size={18} /> },
+    { path: "/reports", label: "Reports", icon: <BarChart3 size={18} /> },
+    { path: "/settings", label: "Setting", icon: <Settings size={18} /> },
   ];
 
   return (
@@ -24,20 +26,24 @@ const Sidebar = () => {
 
       <nav>
         <ul className="space-y-6">
-          {menuItems.map((item) => (
-            <li
-              key={item.id}
-              onClick={() => setActive(item.id)}
-              className={`
-                flex items-center gap-3 cursor-pointer
-                ${active === item.id ? "text-purple-700 font-semibold" : "text-gray-700"}
-                hover:text-purple-700
-              `}
-            >
-              {item.icon}
-              {item.label}
-            </li>
-          ))}
+          {menuItems.map((item) => {
+            const isActive = location.pathname === item.path;
+
+            return (
+              <li
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                className={`
+                  flex items-center gap-3 cursor-pointer
+                  ${isActive ? "text-purple-700 font-semibold" : "text-gray-700"}
+                  hover:text-purple-700
+                `}
+              >
+                {item.icon}
+                {item.label}
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </div>
