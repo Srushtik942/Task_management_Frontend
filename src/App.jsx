@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import CreateMoodBoard from './components/CreateMoodBoard';
 import Team from './commonComponents/Team';
 import Members from './commonComponents/Members';
+import Report from './commonComponents/Report';
 
 function App() {
   const isLoggedIn = () =>{
@@ -23,6 +24,7 @@ function App() {
       <Route path="/moodBoard" element={<CreateMoodBoard/>}/>
       <Route path="/teams"element={<Team/>}/>
       <Route path="/teams/:teamId/owners" element={<Members />} />
+      <Route path='/reports' element={<Report/>}/>
 
  {/* Protected Route */}
         <Route
